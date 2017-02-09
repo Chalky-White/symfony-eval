@@ -19,6 +19,14 @@ class AppController extends Controller
      */
     public function homeAction()
     {
-        return $this->render('AppBundle:App:home.html.twig');
+        $publications = $this
+            ->getDoctrine()
+            ->getRepository('AppBundle:Publication')
+            ->findBy([], [], 3);
+
+        return $this->render('AppBundle:App:home.html.twig', [
+            'publications' => $publications,
+        ]);
+
     }
 }

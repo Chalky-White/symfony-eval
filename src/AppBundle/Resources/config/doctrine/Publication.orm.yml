@@ -1,0 +1,35 @@
+AppBundle\Entity\Publication:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\PublicationRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+            unique: true
+        author:
+            type: string
+            length: 255
+            unique: true
+        description:
+            type: string
+            length: 255
+            unique: true
+        content:
+            type: text
+        publishedAt:
+            type: datetimetz
+        validated:
+            type: boolean
+    manyToOne:
+        science:
+            targetEntity: Science
+            joinColumn:
+                name: science_id
+                referencedColumnName: id
